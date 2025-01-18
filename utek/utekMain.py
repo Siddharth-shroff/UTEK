@@ -15,7 +15,7 @@ emergencyOptions = []
 def main():
     print ("USER SIDE")
     emergencyOptions = ["Latitude", "Longitude"] #get the options for the emergency details
-    sheets = 6 # FILL IN WITH THE NUMBER OF ROWS IN THE GOOGLE SHEETS - number of rows in the user sheets
+    sheets = sheets_user.col_values(1).count() - 1 # FILL IN WITH THE NUMBER OF ROWS IN THE GOOGLE SHEETS - number of rows in the user sheets - (-1 because the first row is the header)
 
     #get the initial responser details (parameters and options for the parameter)
     hqParameters = [" ", " "]
@@ -29,6 +29,8 @@ def main():
 
     # send over all priority to the GOOGLE SHEETS AND SORT BASED ON PRIORITY
     user = sortingPriority (user)
+
+    
 
 
 def prioritizing(age, distance, injury):
@@ -94,6 +96,7 @@ def locationToFire (user, fireLoc):
     return distance
 
 
+#determining each user
 def eachUser (rowNumber, rescue):
     ## get the user data from the sheet into a ONE D String list
 
