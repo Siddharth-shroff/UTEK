@@ -40,7 +40,7 @@ When the user sends 'help' to the Twilio number, a series of questions is trigge
     - Priority of each user based on their emergency needs.
   - Contains all major functions and methods for the system.
 
-### `Text_message.py`
+### `text_message.py`
 - **Purpose**: Handles communication via text messages using Twilio.
 - **Key Features**:
   - Receives, reads, and responds to text messages.
