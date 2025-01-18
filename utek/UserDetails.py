@@ -8,7 +8,8 @@ class UserDetails:
         #self.details
         self.filledDetails = self.details #stores the filled details of the user 
         self.loc = []
-        
+        self.priority = 0  #ADD
+
     def getFilledInfo (self):
         i = 0
         #userFilledDetails = self.details #
