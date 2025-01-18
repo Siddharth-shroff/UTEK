@@ -34,20 +34,11 @@ def main():
     lat_location = float(input("what is your latitude?"))
     long_location = float(input("what is your longitude?"))
     
-    print("Option 1:" CTAS_level_1)
-    print("Option 2:" CTAS_level3)
-    print("Option 3:" CTAS_level2)
-    print("Option 4:" CTAS_level4)
-    print("Option 5:" CTAS_level_5)
-    
-    injury=int(input("Is your injury best described using options 1,2,3,4, or 5"))
-    res = prioritizing(age,lat_location, long_location, injury)
-    print("the priority level of this person is: ", res)
 
-
-def prioritizing(age,lat_location, long_location, injury):
+def prioritizing(age,injury):
     priority=1
-
+    if age <= 10:
+        priority+=3
     if age <= 15:
         priority+=2
     if age <= 30 and >15:
@@ -64,7 +55,25 @@ def prioritizing(age,lat_location, long_location, injury):
         priority+=1
     return priority
 
+CTAS_level_1=('Cardiac arrest, pre arrest, return of spontaneous circulation (ROSC), chest pain with cardiac features, severe dehydration, chemical burn ≥25% body surface area, unconsciousness, seizures, pregnancy >= 20 weeks - presenting fetal parts, prolapsed cord, Pregnancy >= 20 weeks - vaginal bleeding in 3rd trimester, Respiratory arrest, shortness of breath')
 
+CTAS_level2=('chest pain with cardiac features, hypertension, moderate dehydration, dental avulsion, sore throat, neck pain, Epistaxis, chemical exposures to some body parts, allergic reaction, severe headache, pregnancy >= 20 weeks - presenting fetal parts, prolapsed cord, Pregnancy >= 20 weeks, acute vision loss, shortness of breath, Seizure post-ictal, abdominal pain')
+
+CTAS_level3=('chest pain with no cardiac features, Mild dehydration, resolved Seizures, start of CVA symptoms, Menorrhagia, Pregnancy ≥20 weeks, mild/moderate respiratory distress, burn 5-25% body surface area')  
+
+CTAS_level4=('Hypertension, Potential for dehydration, Non pregnant vaginal bleeding, burn <5% body surface area')
+
+CTAS_level_5=('Sore throat, upper respiratory illness, Minor contusions, abrasions or lacerations')
+
+print("Option 1:" + CTAS_level_1)
+print("Option 2:" + CTAS_level3)
+print("Option 3:" + CTAS_level2)
+print("Option 4:" + CTAS_level4)
+print("Option 5:" + CTAS_level_5)
+    injury=int(input("Is your injury best described using options 1,2,3,4, or 5"))
+    age = int(input ("what is your age?"))
+    res = prioritizing(age, injury)
+    print("the priority level of this person is: ", res)
 
 
 #figure out the closest dispatcher to the user 
