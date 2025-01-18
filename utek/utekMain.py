@@ -18,10 +18,10 @@ def main():
     user = UserDetails (userData)
     rescue = HQDetails (hqParameters, rescueOptions)
     user.getFilledInfo()
-    
+
+    #finding the dispatch center that's the closest to the citizen
     nearestLoc = []
     nearestLoc = location(user, rescue, emergencyOptions)
-
     print("The nearest location is the emergency response at a latitude of " + nearestLoc[0] + ", and a longitude of " + nearestLoc[1])
 
 def location (user, rescue, emergencyOption):
