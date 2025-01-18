@@ -29,6 +29,22 @@ def main():
     fireLoc = [0, 0] #FILL IN WITH THE COORDINATES OF THE FIRE
     distanceToFire = locationToFire (user, fireLoc)
 
+    #inputting the age and injury type
+    age = int(input ("what is your age?"))
+    lat_location = float(input("what is your latitude?"))
+    long_location = float(input("what is your longitude?"))
+    
+    print("Option 1:" CTAS_level_1)
+    print("Option 2:" CTAS_level3)
+    print("Option 3:" CTAS_level2)
+    print("Option 4:" CTAS_level4)
+    print("Option 5:" CTAS_level_5)
+    
+    injury=int(input("Is your injury best described using options 1,2,3,4, or 5"))
+    res = prioritizing(age,lat_location, long_location, injury)
+    print("the priority level of this person is: ", res)
+
+
 def prioritizing(age,lat_location, long_location, injury):
     priority=1
 
@@ -48,20 +64,6 @@ def prioritizing(age,lat_location, long_location, injury):
         priority+=1
     return priority
 
-
-age = int(input ("what is your age?"))
-lat_location = float(input("what is your latitude?"))
-long_location = float(input("what is your longitude?"))
-
-print("Option 1:" CTAS_level_1)
-print("Option 2:" CTAS_level3)
-print("Option 3:" CTAS_level2)
-print("Option 4:" CTAS_level4)
-print("Option 5:" CTAS_level_5)
-
-injury=int(input("Is your injury best described using options 1,2,3,4, or 5"))
-res = prioritizing(age,lat_location, long_location, injury)
-print("the priority level of this person is: ", res)
 
 
 
