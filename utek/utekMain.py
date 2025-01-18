@@ -18,21 +18,24 @@ def main():
     user = UserDetails (userData)
     rescue = HQDetails (hqParameters, rescueOptions)
     user.getFilledInfo()
-
+    
     #finding the dispatch center that's the closest to the citizen
     nearestRescueLoc = []
     nearestRescueLoc = locationToRescue(user, rescue, emergencyOptions)
+
     print("The nearest location is the emergency response at a latitude of " + nearestRescueLoc[0] + ", and a longitude of " + nearestRescueLoc[1])
 
-#method to find the closest dispatch center
+
+
+#figure out which emergency response 
 def locationToRescue (user, rescue, emergencyOption):
     userLoc = [0, 0] #index 0 = latitude, 1 = longitude
     allRescueLat = rescue.responseOptions[:, rescue.responseParameters.index("Latitude")] #getting all latitudes of the rescue centers
     allRescueLong = rescue.responseOptions[:, rescue.responseParameters.index("Longitude")]
 
     rescueLoc = [0, 0]
-    userLoc[0] = user.filledDetails[(emergencyOptions.index("Latitude"))]
-    userLoc[1] = user.filledDetails[(emergencyOptions.index("Longitude"))]
+    userLoc[0] = user.filledDetails[(emergencyOption.index("Latitude"))]
+    userLoc[1] = user.filledDetails[(emergencyOption.index("Longitude"))]
 
     distances = []
     for i in range(len(allRescueLat)):
@@ -47,5 +50,6 @@ def locationToRescue (user, rescue, emergencyOption):
     rescueLoc[1] = allRescueLong[indexOfNearestLoc]
 
     return rescueLoc
+
 
 
