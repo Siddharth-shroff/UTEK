@@ -18,6 +18,7 @@ def main():
     user = UserDetails (userData)
     rescue = HQDetails (hqParameters, rescueOptions)
     user.getFilledInfo()
+    user.loc = [user.filledDetails[(emergencyOptions.index("Latitude"))], user.filledDetails[(emergencyOptions.index("Longitude"))]]
     
     #finding the dispatch center that's the closest to the citizen
     nearestRescueLoc = []
@@ -25,21 +26,18 @@ def main():
 
     print("The nearest location is the emergency response at a latitude of " + nearestRescueLoc[0] + ", and a longitude of " + nearestRescueLoc[1])
 
+    fireLoc = [0, 0] #FILL IN WITH THE COORDINATES OF THE FIRE
+    distanceToFire = locationToFire (user, fireLoc)
 
-
-#figure out which emergency response 
-def locationToRescue (user, rescue, emergencyOption):
-    userLoc = [0, 0] #index 0 = latitude, 1 = longitude
+#figure out the closest dispatcher to the user 
+def locationToRescue (user, rescue):
     allRescueLat = rescue.responseOptions[:, rescue.responseParameters.index("Latitude")] #getting all latitudes of the rescue centers
     allRescueLong = rescue.responseOptions[:, rescue.responseParameters.index("Longitude")]
-
     rescueLoc = [0, 0]
-    userLoc[0] = user.filledDetails[(emergencyOption.index("Latitude"))]
-    userLoc[1] = user.filledDetails[(emergencyOption.index("Longitude"))]
 
     distances = []
     for i in range(len(allRescueLat)):
-        distances[i] = math.sqrt(math.pow((userLoc[0] - allRescueLat[i]), 2) + math.pow((userLoc[1] - allRescueLong[i]), 2))
+        distances[i] = math.sqrt(math.pow((user.loc[0] - allRescueLat[i]), 2) + math.pow((user.loc[1] - allRescueLong[i]), 2))
     indexOfNearestLoc = 0
     smallestDis = 100000000000
     for x in distances:
@@ -50,6 +48,11 @@ def locationToRescue (user, rescue, emergencyOption):
     rescueLoc[1] = allRescueLong[indexOfNearestLoc]
 
     return rescueLoc
+
+#figure out the distance of the user to the fire using pythagorean theorem
+def locationToFire (user, fireLoc):
+    distance = math.sqrt(math.pow((user.loc[0] - fireLoc[0]), 2) + math.pow((user.loc[1] - fireLoc[0]), 2))
+    return distance
 
 
 
