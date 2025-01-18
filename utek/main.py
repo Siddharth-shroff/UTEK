@@ -97,7 +97,8 @@ def main():
 
     user = []
     for i in range (0, 5):
-        user.append(eachUser (i, rescue))
+        user.append(eachUser(i))
+        
 
     emergencyOptions = sheets_user.row_values(1) #get the options for the emergency details
     
@@ -123,7 +124,7 @@ def main():
 
 
 #input citizens in need
-def eachUser (rowNumber, rescue):
+def eachUser (rowNumber):
     print("Option 1: " + CTAS_level_1)
     print("\n")
     print("Option 2: " + CTAS_level_2)
@@ -138,39 +139,44 @@ def eachUser (rowNumber, rescue):
 
 
     name = input("Please enter your full name:\n")
-    injury=int(input("Is your injury best described using options 1, 2, 3, 4, 5, or 6"))
+    injury=int(input("Is your injury best described using options 1, 2, 3, 4, 5, or 6\n"))
     while (injury > 6 or injury < 1):
-        injury=int(input("Please input an integer from 1 to 6. Is your injury best described using options 1, 2, 3, 4, 5, or 6"))
+        injury=int(input("Please input an integer from 1 to 6. Is your injury best described using options 1, 2, 3, 4, 5, or 6\n"))
     if (injury == 6):
-        injury= int(input("Do you require assistance from the fire department (7) or police department (8)"))
+        injury= int(input("Do you require assistance from the fire department (7) or police department (8)\n"))
         while (injury > 8 or injury < 7):
-            injury= int(input("Please input either 7 or 8. Do you require assistance from the fire department (7) or police department (8)"))
+            injury= int(input("Please input either 7 or 8. Do you require assistance from the fire department (7) or police department (8)\n"))
     age = int(input ("What is your age?\n"))
 
-    user.injury = injury
 
 
     ## get the user data from the sheet into a ONE D String list
     userData = sheets_user.row_values(rowNumber+1)
 
     #add the name, age, injury into the spreadsheet
-    line_num = rowNumber+1 #note: line_num += 1 after each iteration
+    line_num = rowNumber+2 #note: line_num += 1 after each iteration
     sheets_user.update_acell('B'+str(line_num), name)
     sheets_user.update_acell('F'+str(line_num), injury)
     sheets_user.update_acell('E'+str(line_num), age)
 
     user = UserDetails(userData)
+    user.injury = injury
+
+
+
+
+    user.loc = [float(sheets_user.cell(rowNumber+2, 3).value), float(sheets_user.cell(rowNumber+2, 4).value)]
+    #print (user.loc[0] + " " + user.loc[1] + " LONG AND LAT PF ISER")
 
     fireLoc = [sheets_fire.acell('A2').value, sheets_fire.acell('B2').value] #coordinates of the fire
     distanceToFire = locationToFire (user, fireLoc)
 
+    
 
     res = prioritizing(age, distanceToFire, injury)
-    print("the priority level of person " + str(i) + " is: ", res)
+    #print("the priority level of person " + str(i) + " is: ", res)
     user.priority = res
     sheets_user.update_acell('G'+str(line_num),res)
-
-    user.loc = [user.filledDetails[(emergencyOptions.index('Latitude'))], user.filledDetails[(emergencyOptions.index('Longitude'))]]
 
     return user
 
@@ -277,7 +283,7 @@ def locationToRescue (user, rescue):
 
 #figure out the distance of the user to the fire using pythagorean theorem
 def locationToFire(user, fireLoc):
-    distance = math.sqrt(math.pow((float(user.loc[0]) - float(fireLoc[0])), 2) + math.pow((float(user.loc[1]) - float(fireLoc[1])), 2))
+    distance = math.sqrt((float(user.loc[0]) - float(fireLoc[0]))**2 + (float(user.loc[1]) - float(fireLoc[1]))**2)
     return distance
 
 #assign dispatchers to highly prioritized citizens
