@@ -52,7 +52,7 @@ def prioritizing(age, distance, injury):
         priority+=3
     if age <= 15:
         priority+=2
-    if age <= 30 and >15:
+    if age <= 30 and age>15:
         priority+=1
     if injury == "1":
         priority+=5
