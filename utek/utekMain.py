@@ -20,11 +20,12 @@ def main():
     user.getFilledInfo()
 
     #finding the dispatch center that's the closest to the citizen
-    nearestLoc = []
-    nearestLoc = location(user, rescue, emergencyOptions)
-    print("The nearest location is the emergency response at a latitude of " + nearestLoc[0] + ", and a longitude of " + nearestLoc[1])
+    nearestRescueLoc = []
+    nearestRescueLoc = locationToRescue(user, rescue, emergencyOptions)
+    print("The nearest location is the emergency response at a latitude of " + nearestRescueLoc[0] + ", and a longitude of " + nearestRescueLoc[1])
 
-def location (user, rescue, emergencyOption):
+#method to find the closest dispatch center
+def locationToRescue (user, rescue, emergencyOption):
     userLoc = [0, 0] #index 0 = latitude, 1 = longitude
     allRescueLat = rescue.responseOptions[:, rescue.responseParameters.index("Latitude")] #getting all latitudes of the rescue centers
     allRescueLong = rescue.responseOptions[:, rescue.responseParameters.index("Longitude")]
