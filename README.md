@@ -10,6 +10,7 @@ When the user sends 'help' to the Twilio number, a series of questions is trigge
 
 - **Interactive Help Process**: When 'help' is sent to the Twilio number, a series of questions is triggered to gather user information. 
 - **Automated Message Sending**: Rescuers from the dispatch center are then notified to assist the user based on the gathered data.
+- **Google Sheets Integration**: Stores and retrieves user and dispatch center data using Google Sheets, providing a centralized and accessible data repository.
 - **Priority-based Dispatch**: The system calculates and prioritizes emergency responses based on citizen injury severity and proximity to dispatch centers.
 
 ## Installation
@@ -18,5 +19,5 @@ When the user sends 'help' to the Twilio number, a series of questions is trigge
 
 ```bash
 pip install twilio
-
+pip install twilio gspread google-auth
 
