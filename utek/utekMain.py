@@ -29,6 +29,42 @@ def main():
     fireLoc = [0, 0] #FILL IN WITH THE COORDINATES OF THE FIRE
     distanceToFire = locationToFire (user, fireLoc)
 
+def prioritizing(age,lat_location, long_location, injury):
+    priority=1
+
+    if age <= 15:
+        priority+=2
+    if age <= 30 and >15:
+        priority+=1
+    if injury == "1":
+        priority+=5
+    if injury == "2":
+        priority+=4
+    if injury == "3":
+        priority+=3
+    if injury == "4":
+        priority+=2
+    if injury == "5":
+        priority+=1
+    return priority
+
+
+age = int(input ("what is your age?"))
+lat_location = float(input("what is your latitude?"))
+long_location = float(input("what is your longitude?"))
+
+print("Option 1:" CTAS_level_1)
+print("Option 2:" CTAS_level3)
+print("Option 3:" CTAS_level2)
+print("Option 4:" CTAS_level4)
+print("Option 5:" CTAS_level_5)
+
+injury=int(input("Is your injury best described using options 1,2,3,4, or 5"))
+res = prioritizing(age,lat_location, long_location, injury)
+print("the priority level of this person is: ", res)
+
+
+
 #figure out the closest dispatcher to the user 
 def locationToRescue (user, rescue):
     allRescueLat = rescue.responseOptions[:, rescue.responseParameters.index("Latitude")] #getting all latitudes of the rescue centers
