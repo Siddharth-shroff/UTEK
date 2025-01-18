@@ -31,7 +31,7 @@ When the user sends 'help' to the Twilio number, a series of questions is trigge
     - Location.
   - Accepts input as a string list containing these attributes.
 
-### `utekMain.py` / `main.py`
+### `main.py`
 - **Purpose**: Core system for prioritization and calculations.
 - **Key Features**:
   - Calculates:
