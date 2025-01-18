@@ -13,6 +13,40 @@ When the user sends 'help' to the Twilio number, a series of questions is trigge
 - **Google Sheets Integration**: Stores and retrieves user and dispatch center data using Google Sheets, providing a centralized and accessible data repository.
 - **Priority-based Dispatch**: The system calculates and prioritizes emergency responses based on citizen injury severity and proximity to dispatch centers.
 
+### `HQDetails.py`
+- **Purpose**: Manages data for response/dispatch centers.
+- **Key Features**:
+  - Stores details for each dispatch center, including:
+    - Number of each type of emergency vehicle.
+    - Number of each type of emergency response office.
+    - Location of the center.
+  - Accepts input as a string list containing these attributes.
+
+### `UserDetails.py`
+- **Purpose**: Manages data for citizens requiring emergency services.
+- **Key Features**:
+  - Stores details for each citizen in need, including:
+    - Type of injury.
+    - Age range.
+    - Location.
+  - Accepts input as a string list containing these attributes.
+
+### `utekMain.py` / `main.py`
+- **Purpose**: Core system for prioritization and calculations.
+- **Key Features**:
+  - Calculates:
+    - Distance from the user to the fire or emergency.
+    - Closest dispatcher to the user.
+    - Priority of each user based on their emergency needs.
+  - Contains all major functions and methods for the system.
+
+### `Text_message.py`
+- **Purpose**: Handles communication via text messages using Twilio.
+- **Key Features**:
+  - Receives, reads, and responds to text messages.
+  - If the sender texts "help," the system:
+    - Gathers information about the sender, including age, name, injury type, and location, through repeated text messages
+
 ## Installation
 
 1. Install the required libraries:
