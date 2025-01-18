@@ -26,7 +26,7 @@ pip install twilio gspread google-auth
 
 1. “Receive and Reply to Incoming Messages - Python | Twilio,” Twilio.com, 2025. [Link](https://www.twilio.com/docs/messaging/tutorials/how-to-receive-and-reply/python#code-respond-to-an-incoming-text-message) (accessed Jan. 18, 2025).
 
-2. H. Canada, “Human health effects of wildfire smoke,” www.canada.ca, Jun. 06, 2024. [Link](https://www.canada.ca/en/health-canada/services/publications/healthy-living/human-health-effects-wildfire-smoke.html).
+2. H. Canada, “Human health effects of wildfire smoke,” canada.ca, Jun. 06, 2024. [Link](https://www.canada.ca/en/health-canada/services/publications/healthy-living/human-health-effects-wildfire-smoke.html).
 
 3. “What to Expect When You Call 9-1-1,” Londonpolice.ca, 2024. [Link](https://www.londonpolice.ca/en/services/what-to-expect-when-you-call-911.aspx#What-to-expect-when-you-call-9-1-1) (accessed Jan. 18, 2025).
 
