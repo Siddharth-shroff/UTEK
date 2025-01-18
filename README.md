@@ -41,3 +41,5 @@ pip install twilio gspread google-auth
 [8] “gspread — gspread 6.1.3 documentation,” Gspread.org, 2024. [Link](https://docs.gspread.org/en/v6.1.3/) (accessed Jan. 18, 2025).
 
 [9] “google.oauth2.service_account module — google-auth 1.30.0 documentation,” Readthedocs.io, 2021. [Link](https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html) (accessed Jan. 18, 2025).
+
+10) D. Lee, “Los Angeles residents grapple with long recovery as firefighters make gains in wildfire battle,” CNN, Jan. 17, 2025. Available: [Link](https://www.cnn.com/weather/live-news/fires-los-angeles-california-01-17-25/index.html). [Accessed: Jan. 18, 2025]
